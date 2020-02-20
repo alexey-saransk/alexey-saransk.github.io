@@ -1,58 +1,31 @@
 $(document).ready(function() {
 
     let uinButton = $("#uinButton");
-    let uinNumberText = $("#uinNumber");
+    let uinNumber = $("#uinNumber");
 
     uinButton.on("click", function() {
 
-        if ( uinNumberText.val().length === 25 || uinNumberText.val().length === 20 ) {
+        if ( uinNumber.val().length === 25 || uinNumber.val().length === 20 ) {
 
-            let linkServer = "https://gospay.ru/api/uin/uinValidator.php";
-
-            var inPHPValidator = {
-                "uin" : uinNumberText.text(),
-            };
+            let linkServer  = "https://gospay.ru/api/uin/uinValidator.php" + "?UIN=" + uinNumber.val();
+            let linkRead    = "https://gospay.ru/api/uin/file.js";
 
             $.ajax({
+                method: "POST",
+                async: false,
                 url: linkServer,
-                type: 'POST',
-                data: JSON.stringify(inPHPValidator),
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                async: true,
-                beforeSend: function() {
-                    uinButton.prop("disabled", true);
-                    //StartSearch(uinButton);
-                },
-                success: function(data) {
-                    //StopSearch(uinButton);
-                    uinButton.prop("disabled", false);
-
-                    if (data.text === 'Y' && data.code === 'Y') {
-
-                        //что-то нашли по УИН валидный
-                        Swal.fire({
-                            title: '👌 ✔ 👍',
-                            html: data.text,
-                            type: 'warning',
-                            position: 'center',
-                        });
-
-                    } else {
-
-                        //УИН номер не валидный
-                        Swal.fire({
-                            title: 'Ошибка',
-                            html: data.text,
-                            type: 'warning',
-                            position: 'center',
-                        });
-
-                    }
-
-                },
-
             });
+
+            //прячем ошибки корсов
+            console.clear();
+
+            $.ajax({
+                method: "GET",
+                async: false,
+                url: linkRead,
+                dataType: "script"
+            });
+
 
         } else {
             Swal.fire({
