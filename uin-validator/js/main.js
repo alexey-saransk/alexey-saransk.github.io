@@ -40,7 +40,6 @@ $(document).ready(function() {
 
     });
 
-    console.log("\n%c  \n%c \n%c  by ❤ Alexey Akashkin ❤ \n\n vk.com/6level6  \n\n", "background: url(https://alexey-saransk.github.io/uin-validator/img/alexey.jpg) center center no-repeat;background-size:contain;font-size:100px;", "", "font-size:15px");
-
+    console.log("\n%c  \n%c \n%c  by 🙈 Alexey Akashkin 🙉 \n\n vk.com/6level6  \n\n", "background: url(https://raw.githubusercontent.com/alexey-saransk/alexey-saransk.github.io/master/uin-validator/img/alexey.jpg) center center no-repeat;background-size:contain;font-size:250px;", "", "font-size:15px");
 
 });
