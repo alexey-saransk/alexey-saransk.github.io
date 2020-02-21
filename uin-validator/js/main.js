@@ -48,6 +48,13 @@ $(document).ready(function() {
                         );
                     }
 
+                },
+                error: function () {
+                    Swal.fire(
+                        'Ошибка',
+                        'Напишите этому человеку vk.com/6level6',
+                        'error'
+                    );
                 }
 
             });
