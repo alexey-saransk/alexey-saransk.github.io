@@ -31,8 +31,9 @@
 		<div id="form">
 
 			<input id="uinNumber" type="search" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"  min="0" minlength="20" maxlength="25" name="uin" placeholder="Только цифры"/>
+
 			<label for="uinNumber">
-				<input id="uinButton" type="button" value="Проверить" />
+				<button type="button" id="uinButton">Проверить</button>
 			</label>
 
 		</div>

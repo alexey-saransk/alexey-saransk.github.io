@@ -101,6 +101,7 @@ body {
   border-radius: 4px;
   border: none;
   letter-spacing: 0.5px;
+  min-width: 120px;
 }
 #form #uinButton:hover {
   background-color: #3462d6;

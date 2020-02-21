@@ -3,27 +3,53 @@ $(document).ready(function() {
     let uinButton = $("#uinButton");
     let uinNumber = $("#uinNumber");
 
+
+
     uinButton.on("click", function() {
 
         if ( uinNumber.val().length === 25 || uinNumber.val().length === 20 ) {
 
-            let linkServer  = "https://gospay.ru/api/uin/uinValidator.php" + "?UIN=" + uinNumber.val();
-            let linkRead    = "https://gospay.ru/api/uin/file.js";
+            let linkServer  = "https://gospay.ru/api/uin/uinValidator.php";
+
+            var inGisGmp = {
+                "uin" : uinNumber.val()
+            };
 
             $.ajax({
-                method: "POST",
-                async: false,
                 url: linkServer,
-            });
+                type: 'POST',
+                data: JSON.stringify(inGisGmp),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: true,
+                beforeSend: function() {
+                    uinButton.prop("disabled", true)
+                },
+                success: function(data) {
+                    uinButton.prop("disabled", false);
 
-            //прячем ошибки корсов
-            console.clear();
+                    if (data.code === "Y") {
+                        Swal.fire(
+                            'Валидный!',
+                            'УИН №' + uinNumber.val() + ' ',
+                            'success'
+                        );
+                    } else if (data.code === "N") {
+                        Swal.fire(
+                            'Не валидный!',
+                            'УИН №' + uinNumber.val() + ' ',
+                            'error'
+                        );
+                    } else {
+                        Swal.fire(
+                            '' + data.text +'',
+                            'УИН №' + uinNumber.val() + ' ',
+                            'error'
+                        );
+                    }
 
-            $.ajax({
-                method: "GET",
-                async: false,
-                url: linkRead,
-                dataType: "script"
+                }
+
             });
 
 
