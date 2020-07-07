@@ -217,7 +217,12 @@
 	left: 0;
 
 	&::before {
-		content: "\f14a";
+		//content: "\f14a";
+      content: "<";
+      font-family: monospace;
+      font-weight: bold;
+      font-size: 48px;
+      color: rgba(0, 0, 0, 0.6);
 	}
 }
 
@@ -225,7 +230,12 @@
 	right: 0;
 
 	&::before {
-		content: "\f14f";
+		//content: "\f14f";
+      content: ">";
+      font-family: monospace;
+      font-weight: bold;
+      font-size: 48px;
+      color: rgba(0, 0, 0, 0.6);
 	}
 }
 
@@ -1003,11 +1013,11 @@
 		}
 
 		.owl-next {
-			right: -15px;
+			right: -5px;
 		}
 
 		.owl-prev {
-			left: -15px;
+			left: -5px;
 		}
 
 		.owl-dots {	display: none; }
@@ -1019,11 +1029,11 @@
 		//padding-right: 100px;
 
 		.owl-next {
-			right: 20px;
+			right: 0;
 		}
 
 		.owl-prev {
-			left: 20px;
+			left: 0;
 		}
 	}
 }
