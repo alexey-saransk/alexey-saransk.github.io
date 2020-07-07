@@ -1,0 +1,153 @@
+-
+	function getImageSize(name) {
+		try { return name.match('[0-9]+(x)[0-9]+')[0].split('x'); }
+		catch ( error ) {
+			throw new Error('Error in function getImageSize:\n' + error);
+		}
+	}
+
+	//- Get menu branch by category name
+	function getMenuCategory(category) {
+		for (var i = 0; i < menu.length; i++) {
+			if (menu[i].category === category) {
+				return menu[i];
+			}
+		}
+		return undefined;
+	}
+
+	//- Any page title to *.html link
+	function nameToLink(name) {
+		try { return name.trim().replace(/\s/g, '-').replace(/[\(\)]/g, '').toLowerCase() + '.html'; }
+		catch ( error ) {
+			throw new Error('Error in function nameToLink:\n' + error);
+		}
+	}
+
+
+//- Img image
+mixin img(name, className)
+	- var size = getImageSize(name);
+	- var ext = name.split('.')[1];
+
+	img(src='images/' + name, alt='', width=size[0], height=size[1], class=className)
+
+
+//- Jpg image
+mixin jpg(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.jpg', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Png image
+mixin png(name, className)
+	- var size = getImageSize(name);
+	img(src='images/' + name + '.png', alt='', width=size[0], height=size[1], class=className)
+
+
+//- Loop without indexing mixin
+mixin loop(count)
+	- for (var i = 0; i < count; i++)
+		block
+
+
+//- Parallax Section
+mixin parallax(obj)
+	section.section.parallax-container(data-parallax-img= 'images/' + obj.img + '.jpg')&attributes(attributes)
+		.parallax-content(class= obj.innerClass)
+			block
+
+//- Parallax Block
+mixin parallax-block(obj)
+	.parallax-container(data-parallax-img= 'images/' + obj.img + '.jpg')&attributes(attributes)
+		.parallax-content(class= obj.innerClass)
+			block
+
+//- Breadcrumbs 
+mixin breadcrumbs(obj)
+	- var activeItemName= obj.path.pop();
+	- var category = getMenuCategory(obj.category);
+
+	// Breadcrumbs 
+	section.bg-gray-7
+		.breadcrumbs-custom.box-transform-wrap.context-dark.bg-image.gradient-overlay(style='background-image: url(images/bg-typography.jpg);')
+			.container
+				h3.breadcrumbs-custom-title=activeItemName
+				.breadcrumbs-custom-decor
+			
+		.container
+			ul.breadcrumbs-custom-path
+				li: a(href='index.html') Home
+				if (typeof(category) !== 'undefined' && (category.title !== activeItemName))
+					li: a(href=category.link ? category.link : nameToLink(category.title))=category.title
+					-for( var i = 0; i < obj.path.length; i++)
+						li: a(href=obj.path[i].link ? obj.path[i].link : nameToLink(obj.path[i].title))=obj.path[i].title
+
+				li.active=activeItemName
+
+
+//- Logo
+mixin logo(obj)
+	a.brand(href='index.html' class=obj.mod ? obj.mod : '')
+		+png(obj.defaultLogo, 'brand-logo-dark')
+		+png(obj.inverseLogo, 'brand-logo-light')
+
+
+//- Copyright
+mixin rights(obj)
+	// Rights
+	p.rights(class=obj.modClass ? obj.modClass : '')
+		span &copy;&nbsp;
+		span.copyright-year
+		span &nbsp;
+		span=obj.name ? obj.name : logo.name
+		span .&nbsp;
+		| All Rights Reserved.
+		| Design&nbsp;by&nbsp;#[a(href="https://zemez.io/") Zemez]
+
+
+//- Social List Widget
+//- socials - an array of {link}
+//- iclass - icon class
+//- lclass - list class
+
+mixin widget-list(socials, iclass, lclass)
+	- var iclass = iclass ? " " + iclass : " icon-xxs"
+	- var lclass = lclass
+
+	ul.list-inline(class=lclass)
+		if(socials.length)
+			each link in socials
+				li: a(href=link.href class=link.icon + iclass)
+		else
+			li: a(href='#' class='icon mdi mdi-facebook')
+			li: a(href='#' class='icon mdi mdi-twitter')
+			li: a(href='#' class='icon mdi mdi-instagram')
+			li: a(href='#' class='icon mdi mdi-google-plus')
+
+
+mixin box-icon-minimal(obj)
+	article.box-icon-minimal(class=obj.mod)
+		.unit.align-items-center(class=obj.unit)
+			.unit-left: .icon(class=obj.icon)
+			.unit-body
+				.box-icon-minimal-title=obj.title
+				p.box-icon-minimal-text=obj.text
+
+//- Title Panel
+mixin title-panel(obj)
+	.title-panel(class=obj.mod)
+		.group-xl.group-middle(class=obj.modGroup)
+			.title-panel-left
+				h5.oh-desktop.title-panel-title: span.d-inline-block.wow.slideInDown!=obj.title
+			if( obj.owlNav )
+				.owl-custom-nav-2.wow.fadeInRight(id='owl-custom-nav-' + obj.owlNav)
+			if( obj.list )
+				// Nav tabs
+				div.oh-desktop: ul.nav.nav-tabs-4
+					each itemList, i in obj.list
+						li.nav-item-4.wow.slideInUp(role='presentation' data-wow-delay= '.' + i + 's'): a.nav-link-4(class=itemList.class href=itemList.id data-toggle='tab')=itemList.text
+			if( obj.button )
+				a.button.button-winona.wow.fadeInRight(href='#' class= obj.classButton ? obj.classButton : 'button-primary')=obj.button
+
+		.title-panel-decor.wow.slideInLeft

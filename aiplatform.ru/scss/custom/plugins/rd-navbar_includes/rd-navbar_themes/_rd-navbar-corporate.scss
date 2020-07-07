@@ -1,0 +1,256 @@
+/**
+*
+* RD Navbar Corporate
+* =====================================================
+*/
+.rd-navbar-corporate {
+
+	// Static
+	&.rd-navbar-static {
+		background: $gray-100;
+
+		.rd-navbar-main-outer {
+			padding-left: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 2;
+		}
+
+		.rd-navbar-main {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: $rd-navbar-width;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 25px 0;
+
+			// Extra large ≥1200px
+			@include media-breakpoint-up(xl) {
+				padding: 35px 0;
+			}
+		}
+
+		.rd-navbar-panel {
+			position: relative;
+			display: flex;
+			align-items: center;
+		}
+
+		// RD Navbar Brand
+		.rd-navbar-brand {
+
+			img {
+				width: auto;
+				height: auto;
+				max-width: 160px;
+				max-height: 160px;
+			}
+		}
+
+		.rd-navbar-main-element {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding: 0 30px;
+			flex-grow: 1;
+
+			// Mega large ≥1600px
+			@include media-breakpoint-up(xxl) {
+				padding-left: 100px;
+			}
+		}
+
+		.rd-navbar-nav-wrap { flex-grow: 1; }
+		.rd-navbar-nav { width: 100%; }
+
+		.rd-nav-item {
+			&.focus,
+			&.opened,
+			&.active {
+				.rd-nav-link { color: $primary; }
+			}
+		}
+
+		.rd-nav-item + .rd-nav-item { margin-left: 5%;	}
+
+		.rd-nav-link {
+			padding: 0;
+			font-size: 13px;
+			color: $gray-800;
+
+			&:hover { color: $primary; }
+
+			&::before { display: none; }
+
+			// Extra large ≥1200px
+			@include media-breakpoint-up(xl) {
+				font-size: 14px;
+			}
+		}
+
+		.rd-menu {
+			top: calc(100% - 14px);
+			margin-top: 0;
+			transform: translate3d(50px, 0, 0);
+
+			// Extra large ≥1200px
+			@include media-breakpoint-up(xl) {
+				transform: translate3d(100px, 0, 0);
+			}
+		}
+
+		.rd-navbar-dropdown { border-bottom-color: $secondary; }
+
+		.rd-navbar-dropdown.rd-navbar-open-left {
+			right: 0;
+			margin-left: 0;
+			margin-right: -30px;
+		}
+
+		// RD all submenus
+		.rd-navbar-submenu {
+			&.focus,
+			&.opened {
+				> .rd-menu {
+					transition-delay: .2s;
+				}
+			}
+		}
+
+		.rd-navbar-megamenu { max-width: $rd-navbar-width; }
+
+		&.rd-navbar--is-stuck,
+		&.rd-navbar--is-clone {
+			box-shadow: 0 0 20px 0 rgba($black, 0.1);
+
+			.rd-navbar-main {	padding: 12px 0; }
+
+			.rd-menu { top: 100%; }
+		}
+
+		// RD Navbar Contacts 4
+		.rd-navbar-contacts-4 {
+			text-align: center;
+
+			> li {
+				display: block;
+				position: relative;
+				width: 40px;
+				height: 40px;
+				line-height: 38px;
+				cursor: pointer;
+
+				&::before {
+					position: absolute;
+					content: '';
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					border: 1px solid $gray-18;
+					transition: all .3s ease-in-out .1s;
+				}
+			}
+
+			.link-wrap {
+				position: absolute;
+				display: inline-block;
+				overflow: hidden;
+				top: 0;
+				right: 0;
+				padding: 0;
+				border: 1px solid transparent;
+				background: transparent;
+				transition: all .3s ease-in-out;
+				pointer-events: none;
+				z-index: -1;
+			}
+
+			a {
+				white-space: nowrap;
+				visibility: hidden;
+				opacity: 0;
+				transition: all .2s ease;
+				transform: translate3d(20px, 0, 0);
+				will-change: transform;
+			}
+
+			.icon {
+				line-height: 40px;
+			}
+
+			li:hover {
+
+				&::before {
+					border-color: transparent;
+					transition-delay: 0s;
+					transition-duration: .15s;
+				}
+
+				.link-wrap {
+					padding-left: 20px;
+					padding-right: 50px;
+					background: $white;
+					border-color: $gray-18;
+					pointer-events: auto;
+				}
+
+				a {
+					opacity: 1;
+					visibility: visible;
+					transform: none;
+					transition-delay: .2s;
+				}
+			}
+		}
+	}
+
+	// Fixed 
+	&.rd-navbar-fixed {
+
+		.rd-navbar-collapse {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		.rd-navbar-brand img { max-width: 160px; }
+	}
+}
+
+
+
+//
+// RD Navbar Contacts 4
+//
+.rd-navbar-contacts-4 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	@include group(10px);
+
+	text-align: left;
+	font-size: 0;
+	line-height: 0;
+
+	> li {
+		display: flex;
+		font-size: 14px;
+		line-height: 1.72;
+		letter-spacing: .075em;
+		font-weight: 400;
+		z-index: 1;
+
+		> * + * {	margin-left: 10px; }
+	}
+
+	a {
+		display: inline-block;
+		@include link($gray-800, $primary);
+	}
+
+	.icon {
+		font-size: 20px;
+		color: $gray-800;
+		line-height: 24px;
+	}
+}

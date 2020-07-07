@@ -1,0 +1,8 @@
+{
+  "useSmtp": false,
+  "host": "mail.mfc47.ru",
+  "port": 25,
+  "username": "portal",
+  "password": "cbth4CBTH$",
+  "recipientEmail": "id41864819@gmail.com"
+}
