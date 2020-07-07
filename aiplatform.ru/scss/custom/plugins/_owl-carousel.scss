@@ -255,7 +255,7 @@
 	text-align: center;
 	outline: none;
 	cursor: pointer;
-	background-color: $gray-200;
+    background-color: #d8d8d8;
 	transition: .2s;
 
 	&::before {
@@ -291,6 +291,15 @@
 		}
 	}
 }
+@media screen and (max-width: 600px) {
+  .owl-dots {
+    margin-top: 24px;
+    .owl-dot {
+      margin-bottom: 24px;
+    }
+  }
+}
+
 
 .owl-carousel.owl-carousel-light-dots {
 	.owl-dot {
@@ -985,8 +994,8 @@
 
 	// Large ≥992px
 	@include media-breakpoint-up(lg) {
-		padding-left: 40px;
-		padding-right: 40px;
+		//padding-left: 40px;
+		//padding-right: 40px;
 
 		.owl-prev,
 		.owl-next {
@@ -1006,8 +1015,8 @@
 
 	// Mega large ≥1200px
 	@include media-breakpoint-up(xl) {
-		padding-left: 100px;
-		padding-right: 100px;
+		//padding-left: 100px;
+		//padding-right: 100px;
 
 		.owl-next {
 			right: 20px;
