@@ -870,20 +870,21 @@
 		padding: 15px 15px 0;
 
 		&::before {
-			bottom: 23px;
+			bottom: 0;
 		}
 	}
 
 	.post-creative-caption {
-		padding: 26px 15px 34px;
-		max-width: 95%;
+        padding: 30px 15px;
+        margin: -15px;
+		max-width: 100%;
 	}
 }
 
 // Large ≥992px
 @include media-breakpoint-up(lg) {
 	.post-creative-caption {
-		max-width: 90%;
+		max-width: 100%;
 	}
 }
 
