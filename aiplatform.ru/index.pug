@@ -45,7 +45,7 @@ block page
                         // RD Navbar Toggle
                         button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav-wrap'): span
                         // RD Navbar Brand
-                        .rd-navbar-brand: a.brand(href='index.html'): +png(logo.default, 'brand-logo-dark')
+                        .rd-navbar-brand: a.brand(href='/'): +png(logo.default, 'brand-logo-dark')
 
                     .rd-navbar-right.rd-navbar-nav-wrap
                         .rd-navbar-aside
@@ -55,7 +55,7 @@ block page
                                     .unit-body: a.phone(href='tel:88342312100') +7 (8342) 31-21-00
                                 li: .unit.unit-spacing-xs
                                     .unit-left: span.icon.mdi.mdi-map-marker
-                                    .unit-body: a.address(href='#') 430005, г. Саранск ул. Пролетарская, д. 36
+                                    .unit-body: a.address(target='_blank', href='https://yandex.ru/maps/42/saransk/?ll=45.176714%2C54.182240&mode=routes&rtext=~54.182126%2C45.176074&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fll%3D45.176%252C54.182%26spn%3D0.001%252C0.001%26text%3D%25D0%25A0%25D0%25BE%25D1%2581%25D1%2581%25D0%25B8%25D1%258F%252C%2520%25D0%25A0%25D0%25B5%25D1%2581%25D0%25BF%25D1%2583%25D0%25B1%25D0%25BB%25D0%25B8%25D0%25BA%25D0%25B0%2520%25D0%259C%25D0%25BE%25D1%2580%25D0%25B4%25D0%25BE%25D0%25B2%25D0%25B8%25D1%258F%252C%2520%25D0%25A1%25D0%25B0%25D1%2580%25D0%25B0%25D0%25BD%25D1%2581%25D0%25BA%252C%2520%25D0%259F%25D1%2580%25D0%25BE%25D0%25BB%25D0%25B5%25D1%2582%25D0%25B0%25D1%2580%25D1%2581%25D0%25BA%25D0%25B0%25D1%258F%2520%25D1%2583%25D0%25BB%25D0%25B8%25D1%2586%25D0%25B0%252C%252036%2520%257B3431499335%257D&z=18.08') 430005, г. Саранск ул. Пролетарская, д. 36
 
                             ul.list-share-2
                                 li: a.icon.mdi.mdi-facebook(href='https://www.facebook.com/Evolenta', target='_blank')
@@ -65,57 +65,7 @@ block page
 
                         .rd-navbar-main
                             include includes/_navigation
-                    //-
-                      .rd-navbar-project-hamburger.rd-navbar-project-hamburger-open.rd-navbar-fixed-element-1( data-multitoggle='.rd-navbar-inner', data-multitoggle-blur='.rd-navbar-wrap', data-multitoggle-isolate )
-                        .project-hamburger
-                          - for (var i = 0; i < 3 ; i++)
-                            span.project-hamburger-arrow
 
-                      .rd-navbar-project
-                        .rd-navbar-project-header
-                          h5.rd-navbar-project-title Latest Projects
-                          .rd-navbar-project-hamburger.rd-navbar-project-hamburger-close( data-multitoggle='.rd-navbar-inner', data-multitoggle-blur='.rd-navbar-wrap', data-multitoggle-isolate )
-                            .project-close
-                              span
-                              span
-
-                        .rd-navbar-project-content.rd-navbar-content: div: .row.gutters-20(data-lightgallery='group')
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '1',
-                              sizeImg: '195x164'
-                            })
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '2',
-                              sizeImg: '195x164'
-                            })
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '3',
-                              sizeImg: '195x164'
-                            })
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '4',
-                              sizeImg: '195x164'
-                            })
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '5',
-                              sizeImg: '195x164'
-                            })
-                          .col-6
-                            +thumbnail-creative({
-                              nameImg: 'aside',
-                              numberImg: '6',
-                              sizeImg: '195x164'
-                            })
 
     section.section.section-sm.video-background.page-header#video
         .videoContainer
@@ -156,6 +106,9 @@ block page
                 .col-lg-12
                     h3.wow.slideInUp Решаемые задачи
             .row
+                .col-lg-12
+                    p  
+            .row
                 .col-lg-6
                     .block-text-info.wow.fadeInLeft
                         b 1. Инвентаризация и учет состояния объектов строительства и земельных участков
@@ -185,9 +138,10 @@ block page
             .row
                 .col-lg-12
                     h3.wow.slideInUp Возможности
-
             .row
-
+                .col-lg-12
+                    p  
+            .row
                 .col-lg-6
                     .row.h-100
                         .col-lg-12.salo.m-h-50
@@ -196,14 +150,13 @@ block page
                                 p Классификация и семантическая сегментация объектов дешифрирования в соответствии с классификатором посредством обработки фотограмметрических данных с использованием моделей машинного обучения.
                         .col-lg-12.salo.m-h-50
                             .block-text-info.wow.fadeInRight
-                                b 2. Формирование выгрузки
+                                b 3. Формирование выгрузки
                                 p Выгрузка результатов обработки объектов дешифрирования и различной геопространственной информации.
-
                 .col-lg-6
                     .row.h-100
                         .col-lg-12.salo
                             .block-text-info.wow.fadeInLeft
-                                b 3. Векторизация объектов
+                                b 2. Векторизация объектов
                                 p Векторизация сегментированных объектов дешифрирования.
                         .col-lg-12.salo
                             .block-text-info.wow.fadeInRight
@@ -238,7 +191,8 @@ block page
 
     section.section.section-sm.bg-gray-100(style={padding: '45px 0 45px 0;'})
         .container.wow.slideInUp
-            .owl-carousel.owl-style-13(data-items='1', data-md-items='2', data-margin='0', data-autoplay='true',  data-nav='true', data-dots='true', data-loop='false', data-rewind='true')
+            //- data-loop='false', data-rewind='true'
+            .owl-carousel.owl-style-13(data-items='1', data-md-items='2', data-margin='0', data-autoplay='true',  data-nav='true', data-dots='true')
                 +post-creative({
                     img: '1-620x620',
                     title: 'Дешифрирование <b>более 90%</b><br> частной застройки на<br> аэрофотоснимках',
@@ -262,6 +216,9 @@ block page
             .row
                 .col-lg-12
                     h3.wow.slideInUp Преимущества
+            .row
+                .col-lg-12
+                    p  
             .row
                 .col-lg-6
                     .block-text-info.wow.fadeInLeft
@@ -289,7 +246,7 @@ block page
                         p Легкость масштабирование интеллектуальной платформы достигнута обеспечением возможности расширения классификатора дешифрируемых объектов за счет интеграции в платформу новых моделей машинного обучения и возможностью добавления сервера для загрузки фотограмметрических данных.
             .row
                 .col-lg-12
-                    a.button.button-lg.button-primary-gradient.go-to-demo-stend(href='http://ai-platform.funreality.ru/ ', target='_blank') Перейти к демо-стенду
+                    a.button.button-lg.button-primary-gradient.go-to-demo-stend.wow.slideInUp(href='http://ai-platform.funreality.ru/ ', target='_blank') Перейти к демо-стенду
 
     section.section-sm.bg-gray-100
         .container
@@ -325,18 +282,18 @@ block page
     section.section.section-sm.section-inset-3.bg-gray-100.text-center#contacts(data-type='anchor')
         .content-md.container
             .row
-                .col-md-4.col-sm-6.md-margin-b-50
+                .col-md-4.col-sm-12
                     .text-center.wow.fadeInRight
                         a.font-size-36.icon.mdi.mdi-phone
                         h6 Телефон
                         p
                             a(href='tel:88342312100') 8 (8342) 31-21-00
-                .col-md-4.col-sm-6.sm-margin-b-50
+                .col-md-4.col-sm-12
                     .text-center
                         a.font-size-36.icon.mdi.mdi-map-marker
                         h6 Адрес
                         p 430005, г. Саранск, ул. Пролетарская, д. 36 помещение 1
-                .col-md-4.col-sm-6
+                .col-md-4.col-sm-12
                     .text-center.wow.fadeInRight
                         a.font-size-36.icon.mdi.mdi-email
                         h6 E-mail
