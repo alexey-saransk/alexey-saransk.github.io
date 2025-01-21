@@ -1,54 +1,104 @@
+@import "_appReset.less";
+
+@colorHeaderBgBlue: rgba(33, 150, 243, 1);
+
+
+@colorTabBgBlue: rgba(30, 136, 229, 1);
+@colorTabTextActive: rgba(255, 255, 255, 1);
+@colorTabText: rgba(255, 255, 255, 0.7);
+
+@transitionSimpleEasy: 0.3s;
+
 @font_family_1: sans-serif;
 @background_color_1: transparent;
+
+
 @background_color_2: #f0f0f0;
 
 .app-container {
   font-family: @font_family_1;
-  margin: 20px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.tabs {
-  display: flex;
-  border-bottom: 1px solid #ccc;
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    background-color: @background_color_1;
-    cursor: pointer;
-    font-size: 16px;
-    outline: none;
-    &:hover {
-      background-color: @background_color_2;
+
+  header{
+    width: 100%;
+    background-color: @colorHeaderBgBlue;
+    height: 64px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      height: 100%;
+      button {
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        outline: none;
+        color: @colorTabText;
+        background-color: transparent;
+        transition: @transitionSimpleEasy;
+        &:hover {
+          color: @colorTabTextActive;
+        }
+      }
+      button.active {
+        color: @colorTabTextActive;
+        background-color: @colorTabBgBlue;
+      }
+    }
+
+  }
+
+  main {
+    padding: 20px 0;
+    .cat-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .cat-item {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 225px;
+        height: 225px;
+        position: relative;
+        overflow: hidden;
+        transition: @transitionSimpleEasy;
+        &:hover{
+          transform: scale(1.1);
+          box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.14);
+        }
+
+        img {
+          height: 100%;
+          width: auto;
+          display: flex;
+          transform: scale(1.7);
+          margin: 0 auto;
+
+        }
+        button{
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          width: 50px;
+          height: 50px;
+          cursor: pointer;
+          background-color: transparent;
+          &.favorite-y{
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDgnIGhlaWdodD0nNDgnIHZpZXdCb3g9JzAgMCA0OCA0OCcgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZyBjbGlwLXBhdGg9J3VybCgjY2xpcDBfMV8yMTgwKSc+PHBhdGggZD0nTTI0IDQyLjdMMjEuMSA0MC4wNkMxMC44IDMwLjcyIDQgMjQuNTYgNCAxN0M0IDEwLjg0IDguODQgNiAxNSA2QzE4LjQ4IDYgMjEuODIgNy42MiAyNCAxMC4xOEMyNi4xOCA3LjYyIDI5LjUyIDYgMzMgNkMzOS4xNiA2IDQ0IDEwLjg0IDQ0IDE3QzQ0IDI0LjU2IDM3LjIgMzAuNzIgMjYuOSA0MC4wOEwyNCA0Mi43WicgZmlsbD0nI0YyNEUxRScvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9J2NsaXAwXzFfMjE4MCc+PHJlY3Qgd2lkdGg9JzQ4JyBoZWlnaHQ9JzQ4JyBmaWxsPSd3aGl0ZScvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPgo=");          }
+          &.favorite-n{
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDgnIGhlaWdodD0nNDgnIHZpZXdCb3g9JzAgMCA0OCA0OCcgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48ZyBjbGlwLXBhdGg9J3VybCgjY2xpcDBfMV8yMTU3KSc+PHBhdGggZD0nTTMzIDZDMjkuNTIgNiAyNi4xOCA3LjYyIDI0IDEwLjE4QzIxLjgyIDcuNjIgMTguNDggNiAxNSA2QzguODQgNiA0IDEwLjg0IDQgMTdDNCAyNC41NiAxMC44IDMwLjcyIDIxLjEgNDAuMDhMMjQgNDIuN0wyNi45IDQwLjA2QzM3LjIgMzAuNzIgNDQgMjQuNTYgNDQgMTdDNDQgMTAuODQgMzkuMTYgNiAzMyA2Wk0yNC4yIDM3LjFMMjQgMzcuM0wyMy44IDM3LjFDMTQuMjggMjguNDggOCAyMi43OCA4IDE3QzggMTMgMTEgMTAgMTUgMTBDMTguMDggMTAgMjEuMDggMTEuOTggMjIuMTQgMTQuNzJIMjUuODhDMjYuOTIgMTEuOTggMjkuOTIgMTAgMzMgMTBDMzcgMTAgNDAgMTMgNDAgMTdDNDAgMjIuNzggMzMuNzIgMjguNDggMjQuMiAzNy4xWicgZmlsbD0nI0YyNEUxRScvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9J2NsaXAwXzFfMjE1Nyc+PHJlY3Qgd2lkdGg9JzQ4JyBoZWlnaHQ9JzQ4JyBmaWxsPSd3aGl0ZScvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPgo=");
+          }
+        }
+      }
     }
   }
-  button.active {
-    border-bottom: 2px solid #007bff;
-    font-weight: bold;
-  }
-}
-.content {
-  padding: 20px 0;
 }
 
 
-.cat-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.cat-item {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.cat-item img {
-  max-width: 200px;
-  height: auto;
-  margin-bottom: 10px;
-}
