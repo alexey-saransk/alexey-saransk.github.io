@@ -1,0 +1,54 @@
+@font_family_1: sans-serif;
+@background_color_1: transparent;
+@background_color_2: #f0f0f0;
+
+.app-container {
+  font-family: @font_family_1;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: @background_color_1;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    &:hover {
+      background-color: @background_color_2;
+    }
+  }
+  button.active {
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+  }
+}
+.content {
+  padding: 20px 0;
+}
+
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cat-item {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.cat-item img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+}
