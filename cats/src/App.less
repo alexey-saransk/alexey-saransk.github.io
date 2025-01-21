@@ -9,14 +9,13 @@
 
 @transitionSimpleEasy: 0.3s;
 
-@font_family_1: sans-serif;
-@background_color_1: transparent;
+@colorBackground: #f0f0f0;
 
-
-@background_color_2: #f0f0f0;
+body{
+  font-family: sans-serif;
+}
 
 .app-container {
-  font-family: @font_family_1;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -32,6 +31,8 @@
       display: flex;
       border-bottom: 1px solid #ccc;
       height: 100%;
+      margin-left: 60px;
+
       button {
         padding: 10px 15px;
         border: none;
@@ -55,14 +56,26 @@
 
   main {
     padding: 20px 0;
+    width: 100%;
+
+     p {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 28px;
+      color: darkgray;
+    }
+
+    > div{
+      margin-left: 60px;
+    }
     .cat-list {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: left;
 
       .cat-item {
         margin: 10px;
-        padding: 10px;
+        padding: 0;
         border: 1px solid #ccc;
         width: 225px;
         height: 225px;

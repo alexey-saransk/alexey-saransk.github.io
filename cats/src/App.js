@@ -127,9 +127,9 @@ function App() {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const result = await response.json();
-                // ищем запись по cat.id
+
                 const favoriteRecord = result.find(item=>item.image_id === cat.id)
-                //удаление
+
                 if(favoriteRecord){
                     await removeFromFavorites(favoriteRecord.id);
                     setFavoriteCats(favoriteCats.filter((favCat) => favCat.image_id !== cat.id));
@@ -225,7 +225,6 @@ function CatItem({ cat, favoriteCats, handleFavoriteClick }) {
 function AllCatsContent({ cats, favoriteCats, handleFavoriteClick }) {
     return (
         <div>
-            <h2>Все котики</h2>
             <div className="cat-list">
                 {cats.map((cat) => (
                     <CatItem
@@ -243,7 +242,6 @@ function AllCatsContent({ cats, favoriteCats, handleFavoriteClick }) {
 function FavoriteCatsContent({ favoriteCats, handleFavoriteClick, loading }) {
     return (
         <div>
-            <h2>Любимые котики</h2>
             <div className="cat-list">
                 {favoriteCats.length === 0 ? ( <p>У вас нет любимых котиков</p>) : (
                     <>{loading && <p>Загрузка...</p>}
